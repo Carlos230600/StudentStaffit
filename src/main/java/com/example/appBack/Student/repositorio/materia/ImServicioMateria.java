@@ -16,7 +16,6 @@ public class ImServicioMateria implements ServicioMateria{
     @Autowired
     MateriaRepository materiaRepository;
 
-
     // Implmentar control de errores: Duplicados...
     @Override
     public Materia addMateria(MateriaDTO mdto) {
@@ -59,7 +58,7 @@ public class ImServicioMateria implements ServicioMateria{
     @Override
     public List<MateriaDTO> getConsultaCampo(MateriaDTO aConsultar) {
         //return studentRepository.getQueryEquals(aConsultar);
-       // return materiaRepository.getQueryLike(aConsultar);
+        //return materiaRepository.getQueryLike(aConsultar);
         return null;
     }
 

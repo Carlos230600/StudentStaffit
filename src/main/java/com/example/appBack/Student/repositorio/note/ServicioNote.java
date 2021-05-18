@@ -1,10 +1,7 @@
 package com.example.appBack.Student.repositorio.note;
 
-import com.example.appBack.Student.Entity.Materia;
-import com.example.appBack.Student.Entity.MateriaDTO;
 import com.example.appBack.Student.Entity.Note;
 import com.example.appBack.Student.Entity.NoteDTO;
-
 import java.util.List;
 
 public interface ServicioNote {
