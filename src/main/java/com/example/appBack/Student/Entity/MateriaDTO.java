@@ -30,7 +30,7 @@ public class MateriaDTO {
     }
 
     //Implementar el metodo
-    public static StudentDTO transforToStudentDTO(Object object){
+    public static StudentDTO transformToStudentDTO(Object object){
         if(object.getClass().toString().equalsIgnoreCase("StudentOutputDTO")){
 
         }

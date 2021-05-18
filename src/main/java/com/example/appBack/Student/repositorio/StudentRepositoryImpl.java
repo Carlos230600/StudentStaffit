@@ -24,8 +24,7 @@ public class StudentRepositoryImpl
     private List<Predicate> predicates;// = new ArrayList<>();
 
 
-    private void resetQueries()
-    {
+    private void resetQueries() {
         cb = entityManager.getCriteriaBuilder();
         query = cb.createQuery(Student.class);
         root = query.from(Student.class);
@@ -75,8 +74,7 @@ public class StudentRepositoryImpl
             List<Student> lista = new ArrayList<>();
             lista.addAll(entityManager.createQuery(query).getResultList());
             return StudentDTO.getAllDTO(lista);
-        }catch (Exception e)
-        {
+        }catch (Exception e) {
             System.err.println(e.getMessage()+"");
             return new ArrayList<>();
         }
@@ -93,8 +91,7 @@ public class StudentRepositoryImpl
     {
         try
         {
-            if(Double.parseDouble(num.toString()) > 0)
-            {
+            if(Double.parseDouble(num.toString()) > 0) {
                 return true;
             }
         }
@@ -105,8 +102,7 @@ public class StudentRepositoryImpl
     private boolean comprobarString(String str)
     {
         try {
-            if (str.trim().length() != 0)
-            {
+            if (str.trim().length() != 0) {
                 return true;
             }
         }catch (Exception e) {e.printStackTrace(); }

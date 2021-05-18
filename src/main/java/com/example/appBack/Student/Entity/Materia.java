@@ -1,11 +1,10 @@
 package com.example.appBack.Student.Entity;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.context.annotation.Description;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -14,23 +13,32 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
+@Table(name="materia")
 public class Materia {
 
     @NonNull
-    @Column
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estudiantes_seq")
+    @GenericGenerator(
+            //name = "ausencias_seq",
+            name = "estudiantes_seq",
+            //strategy = "com.bosonit.staffit.shared.sequences.StringPrefixedSequenceIdGenerator",
+            strategy = "com.example.appBack.Student.Entity.StringPrefixedSequenceIdGenerator",
+            parameters = {
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "50"),
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "EST"),
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%08d")
+            })
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     @NonNull
-    @Column
     private branch branch;
 
     @NonNull
-    @Column
     private String description;
 
     @NonNull
-    @Column
     private String name;
 
 
@@ -69,23 +77,18 @@ public class Materia {
         }
     }
 
-    private boolean comprobarString(String str)
-    {
-        try {
-            if (str.trim().length() != 0 && str != null)
-            {
+    private boolean comprobarString(String str){
+        try{
+            if (str.trim().length() != 0 && str != null) {
                 return true;
             }
         }catch (Exception e) { }
         return false;
     }
 
-    private boolean comprobarNumbers(Object num)
-    {
-        try
-        {
-            if(num != null && Double.parseDouble(num.toString()) > 0)
-            {
+    private boolean comprobarNumbers(Object num){
+        try{
+            if(num != null && Double.parseDouble(num.toString()) > 0){
                 return true;
             }
         }
@@ -93,13 +96,12 @@ public class Materia {
         return false;
     }
 
-    private boolean comprobarObjects(Object objeto)
-    {
+    private boolean comprobarObjects(Object objeto) {
         try {
             if (objeto != null) {
                 return true;
             }
-        }catch(Exception e){ }
+        }catch(Exception e){}
         return false;
     }
 

@@ -21,17 +21,13 @@ public class ImServicioMateria implements ServicioMateria{
     @Override
     public Materia addMateria(MateriaDTO mdto) {
         try {
-
              Materia nuevaMateria = new Materia(mdto);
              materiaRepository.saveAndFlush(nuevaMateria);
-
-             /*return ResponseEntity.ok("Insertado");
+             return nuevaMateria;
              }
-             catch (Exception e)
-             {
-             return ResponseEntity.ok("VALOR NULL");
-             */return null;
-             }catch (Exception e){}
+        catch (Exception e) {
+             e.printStackTrace();
+        }
         return null;
     }
 
