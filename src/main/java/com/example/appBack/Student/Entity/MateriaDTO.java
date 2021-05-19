@@ -1,12 +1,9 @@
 package com.example.appBack.Student.Entity;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-
-import javax.persistence.Column;
-import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,13 +12,13 @@ import java.util.List;
 @AllArgsConstructor
 public class MateriaDTO {
 
-    @NonNull
+    @NotNull
     private branch branch;
 
-    @NonNull
+    @NotNull
     private String description;
 
-    @NonNull
+    @NotNull
     private String name;
 
 

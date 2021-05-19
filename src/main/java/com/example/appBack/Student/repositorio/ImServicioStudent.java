@@ -2,13 +2,17 @@ package com.example.appBack.Student.repositorio;
 
 import com.example.appBack.Student.Entity.Student;
 import com.example.appBack.Student.Entity.StudentDTO;
+import lombok.extern.slf4j.Slf4j;
+import org.hibernate.annotations.common.util.impl.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import java.util.*;
 import java.util.concurrent.RecursiveTask;
+import java.util.logging.Logger;
 
 @Component
+@Slf4j
 public class ImServicioStudent implements ServicioStudent
 {
     @Autowired
@@ -19,31 +23,31 @@ public class ImServicioStudent implements ServicioStudent
     @Override
     public Student addStudent(StudentDTO sdto)
     {
-        /**try {
+        try {
 
-        if(!compararFechas(sdto))
-        {
-            return ResponseEntity.ok("Fechas incorrectas");
+        if(!compararFechas(sdto)){
+            //Fechas incorrectas
+           log.debug("Fechas Incorrectas");
         }
 
-        /** if(studentRepository.existEmail(sdto))
-        {
-            return ResponseEntity.ok("ERROR Email Existente");
+        if(sdto.getCorreo()!=null){
+            //Correo Existente
+           log.debug("Correo Existente");
         }
 
-        if(studentRepository.existNameSurname(sdto)){
-            return ResponseEntity.ok("ERROR, nombre y apellidos repetidos");
+        if(sdto.getNombre()!=null && sdto.getApellido()!=null){
+           log.debug("Nombre y Apellidos existentes");
         }
 
             Student nuevoStudent = new Student(sdto);
             studentRepository.saveAndFlush(nuevoStudent);
 
-            return ResponseEntity.ok("Insertado");
+            return nuevoStudent;
         }
         catch (Exception e)
         {
-            return ResponseEntity.ok("VALOR NULL");
-        }*/
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -60,22 +64,17 @@ public class ImServicioStudent implements ServicioStudent
     }
 
     @Override
-    public List<StudentDTO> getAll()
-    {
+    public List<StudentDTO> getAll(){
         List<Student> lista = studentRepository.findAll();
-        if(lista.isEmpty())
-        {
+        if(lista.isEmpty()) {
             return null;
-        }
-        else
-        {
+        }else {
             return StudentDTO.getAllDTO(lista);
         }
     }
 
     @Override
-    public StudentDTO deleteStudent(String id)
-    {
+    public StudentDTO deleteStudent(String id){
         if(studentRepository.existsById(id)==true) {
             Student student = studentRepository.getOne(id);
             studentRepository.deleteById(id);
@@ -85,12 +84,11 @@ public class ImServicioStudent implements ServicioStudent
     }
 
     @Override
-    public Student updateStudent(String id, StudentDTO sdto)
-    {
-        /*try {
+    public Student updateStudent(String id, StudentDTO sdto){
+        try {
         if(!studentRepository.existsById(id))
         {
-            return ResponseEntity.status(401).body("ID de Estudiante inexistente/no encontrado");
+           return null;
         }
 
         Student nuevoStudent = studentRepository.findById(id).get();
@@ -99,38 +97,32 @@ public class ImServicioStudent implements ServicioStudent
 
         if(!compararFechas(sdto))
         {
-            return ResponseEntity.badRequest().body("Fechas de alta superior a la de baja");
+            //Fechas Incorrectas
+               log.debug("Fechas incorrectas");
         }
 
 
-        if(studentRepository.existEmail(sdto))
+        if(sdto.getCorreo()!=null)
         {
-            String compID = studentRepository.getStudentbyEmail(sdto).getId();
-            if(!id.equalsIgnoreCase(compID))
-            {
-                return ResponseEntity.badRequest().body("ERROR Email Existente");
-            }
+            //Correo Existente
+                log.debug("Correo Existente");
         }
 
 
-        if(studentRepository.existNameSurname(sdto))
+        if(sdto.getNombre()!=null && sdto.getApellido()!=null)
         {
-            String compID = studentRepository.getStudentbyNameSurname(sdto).getId();
-            if(!id.equalsIgnoreCase(compID))
-            {
-                return ResponseEntity.badRequest().body("ERROR, nombre y apellidos repetidos");
-            }
+            //Nombre y Apellidos Existentes
+                log.debug("Nombre y Apellidos existentes");
         }
 
-         */
-            /*studentRepository.saveAndFlush(nuevoStudent);
-              return nuevoStudent;
+
+        studentRepository.saveAndFlush(nuevoStudent);
+        return nuevoStudent;
 
         }
-        catch (Exception e)
-        {
-            return ResponseEntity.badRequest().body("ALGUN VALOR INTRODUCIDO ES NULO, NO SE ACEPTAN NULOS");
-        }*/
+        catch (Exception e){
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -138,7 +130,8 @@ public class ImServicioStudent implements ServicioStudent
     public List<StudentDTO> getConsultaCampo(StudentDTO aConsultar)
     {
         //return studentRepository.getQueryEquals(aConsultar);
-        return studentRepository.getQueryLike(aConsultar);
+        // studentRepository.getQueryLike(aConsultar);
+        return null;
     }
 
     private boolean compararFechas(StudentDTO sdto)

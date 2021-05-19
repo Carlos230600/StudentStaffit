@@ -9,15 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface MateriaRepository extends JpaRepository<Materia,String> {
-/*
-    //List<StudentDTO> getQueryEquals(StudentDTO consulta);
-
-    List<MateriaDTO> getQueryLike(MateriaDTO consulta);
-
-    //@Query("Select U FROM Student where nombre = :nombre and apellido = :apellido")
-    List<Materia> findByNombreAndApellido(String nombre, String apellido);
-
-    //@Query("Select U FROM Student where correo = :correo")
-    List<Materia> findByCorreo(String correo);*/
 
 }

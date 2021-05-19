@@ -45,10 +45,11 @@ public class ImServicioNote implements ServicioNote {
         return null;
     }
 
-    //Implementar
     @Override
     public Note updateNote(String id, NoteDTO ndto) {
-        return null;
+        Note nota2 = noteRepository.findById(id).get();
+        nota2.setDatos(ndto);
+        return nota2;
     }
 
     @Override

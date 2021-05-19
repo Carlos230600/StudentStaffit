@@ -1,9 +1,11 @@
 package com.example.appBack.Student.Entity;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,27 +19,27 @@ public class Tiporegistro {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estudiantes_seq")
     @GenericGenerator(
-            //name = "ausencias_seq",
             name = "estudiantes_seq",
-            //strategy = "com.bosonit.staffit.shared.sequences.StringPrefixedSequenceIdGenerator",
             strategy = "com.example.appBack.Student.Entity.StringPrefixedSequenceIdGenerator",
             parameters = {
                     @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "50"),
                     @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "EST"),
                     @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%08d")
             })
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NonNull
+    @NotNull
     private String id_tipoRegistro;
 
-    @NonNull
+    @Column(unique = true)
+    @NotNull
     private String name;
 
-    @NonNull
+    @NotNull
     private Date last_update;
 
-    @NonNull
+    @NotNull
     private boolean activo;
+
+    public List<Note> nota;
 
     public Tiporegistro(TiporegistroDTO tiporegistroDTO){
         //id null

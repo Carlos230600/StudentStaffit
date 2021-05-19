@@ -1,5 +1,6 @@
 package com.example.appBack.Student.Entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.dom4j.Branch;
@@ -33,25 +34,25 @@ public class Note {
     @NotNull
     private String id_notas;
 
-    @NonNull
+    @NotNull
     private String id_student;
 
-    @NonNull
+    @NotNull
     private String id_tiporegistro;
 
-    @NonNull
+    @NotNull
     private float note;
 
-    @NonNull
+    @NotNull
     private branch branch;
 
-    @NonNull
+    @NotNull
     private String materia;
 
-    @NonNull
+    @NotNull
     private String comment;
 
-    @NonNull
+    @NotNull
     private Date creationDate;
 
 

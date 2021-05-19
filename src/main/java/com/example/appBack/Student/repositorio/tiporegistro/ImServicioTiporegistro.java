@@ -1,13 +1,14 @@
 package com.example.appBack.Student.repositorio.tiporegistro;
 
 import com.example.appBack.Student.Entity.*;
-import com.example.appBack.Student.repositorio.note.NoteRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Component
 public class ImServicioTiporegistro implements ServicioTiporegistro{
 
@@ -16,7 +17,8 @@ public class ImServicioTiporegistro implements ServicioTiporegistro{
 
     @Override
     public Tiporegistro addTiporegistro(TiporegistroDTO tiporegistroDTO) {
-        try {
+        try{
+
             Tiporegistro newTiporegistro = new Tiporegistro(tiporegistroDTO);
             tiporegistroRepository.saveAndFlush(newTiporegistro);
             return newTiporegistro;
@@ -37,18 +39,32 @@ public class ImServicioTiporegistro implements ServicioTiporegistro{
 
     @Override
     public TiporegistroDTO deleteTiporegistro(String id) {
-        if(tiporegistroRepository.existsById(id)==true) {
-            Tiporegistro tiporegistro = tiporegistroRepository.getOne(id);
-            tiporegistroRepository.deleteById(id);
-            return TiporegistroDTO.getTiporegistroDTO(tiporegistro);
+
+        try{
+
+            if(tiporegistroRepository.existsById(id)==true) {
+                Tiporegistro tiporegistro =tiporegistroRepository.getOne(id);
+
+                if(tiporegistro.getNota().isEmpty()){
+                    tiporegistroRepository.deleteById(id);
+                    return TiporegistroDTO.getTiporegistroDTO(tiporegistro);
+                }else{
+                    log.debug("No es posible borrar, nota asociada.");
+                }
+            }
+
+            return null;
+        }catch(Exception e){
+            e.printStackTrace();
         }
         return null;
     }
 
-    // Implmentar la funcionalidad
     @Override
     public Tiporegistro updateTiporegistro(String id, TiporegistroDTO tiporegistroDTO) {
-        return null;
+       Tiporegistro tiporegistro2 = tiporegistroRepository.findById(id).get();
+       tiporegistro2.setDatos(tiporegistroDTO);
+       return tiporegistro2;
     }
 
     @Override

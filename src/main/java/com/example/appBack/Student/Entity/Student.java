@@ -22,16 +22,13 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estudiantes_seq")
     @GenericGenerator(
-            //name = "ausencias_seq",
             name = "estudiantes_seq",
-            //strategy = "com.bosonit.staffit.shared.sequences.StringPrefixedSequenceIdGenerator",
             strategy = "com.example.appBack.Student.Entity.StringPrefixedSequenceIdGenerator",
             parameters = {
             @Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "50"),
             @Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "EST"),
             @Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%08d")
             })
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     private String id;
 
@@ -45,7 +42,6 @@ public class Student {
     private String correo;
 
     @NotNull
-    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date fecha_entrada;
 
     @NotNull
@@ -68,7 +64,6 @@ public class Student {
     private String comentarios;
 
     @NotNull
-    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date fecha_finalizacion;
 
     @NotNull

@@ -1,6 +1,5 @@
-package com.example.appBack.Student.Entity.Output;
+package com.example.appBack.Student.Entity.Search;
 
-import com.example.appBack.Student.Entity.Input.StudentInputDTO;
 import com.example.appBack.Student.Entity.Student;
 import com.example.appBack.Student.Entity.branch;
 import com.fasterxml.jackson.annotation.JsonFormat;

@@ -1,5 +1,6 @@
 package com.example.appBack.Student.Entity;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.context.annotation.Description;
@@ -16,7 +17,7 @@ import java.util.Date;
 @Table(name="materia")
 public class Materia {
 
-    @NonNull
+    @NotNull
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estudiantes_seq")
     @GenericGenerator(
@@ -32,13 +33,13 @@ public class Materia {
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
-    @NonNull
+    @NotNull
     private branch branch;
 
-    @NonNull
+    @NotNull
     private String description;
 
-    @NonNull
+    @NotNull
     private String name;
 
 

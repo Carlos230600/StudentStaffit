@@ -1,5 +1,7 @@
 package com.example.appBack.Student.Entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,13 +15,13 @@ import java.util.List;
 @AllArgsConstructor
 public class TiporegistroDTO {
 
-    @NonNull
+    @NotNull
     private String name;
 
-    @NonNull
+    @NotNull
     private Date last_update;
 
-    @NonNull
+    @NotNull
     private boolean activo;
 
 

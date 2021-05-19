@@ -5,8 +5,7 @@ import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-
+import org.springframework.data.repository.NoRepositoryBean;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,7 +24,7 @@ public class StudentDTO {
     @NotNull
     private String correo;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @NotNull
     private Date fecha_entrada;
 
     @NotNull
@@ -41,13 +40,13 @@ public class StudentDTO {
     private Boolean estado;
     //private String estado;
 
-    //--------------------NUEVOS-----------------------
     @NotNull
     private String correo_trabajo;
 
+    @NotNull
     private String comentarios;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @NotNull
     private Date fecha_finalizacion;
 
     @NotNull

@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,26 +15,25 @@ import java.util.List;
 @AllArgsConstructor
 public class NoteDTO {
 
-    @NonNull
+    @NotNull
     private String id_student;
 
-    @NonNull
+    @NotNull
     private String id_tiporegistro;
 
-    @NonNull
+    @NotNull
     private float note;
 
-    @NonNull
+    @NotNull
     private branch branch;
 
-    @NonNull
+    @NotNull
     private String materia;
 
-    @NonNull
+    @NotNull
     private String comment;
 
-    @NonNull
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @NotNull
     private Date creationDate;
 
 

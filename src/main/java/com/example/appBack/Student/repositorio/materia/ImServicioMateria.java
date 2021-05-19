@@ -2,6 +2,7 @@ package com.example.appBack.Student.repositorio.materia;
 
 import com.example.appBack.Student.Entity.Materia;
 import com.example.appBack.Student.Entity.MateriaDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
+@Slf4j
 public class ImServicioMateria implements ServicioMateria{
 
     @Autowired
@@ -18,9 +20,13 @@ public class ImServicioMateria implements ServicioMateria{
 
     // Implmentar control de errores: Duplicados...
     @Override
-    public Materia addMateria(MateriaDTO mdto) {
+    public Materia addMateria(MateriaDTO materiaDTO) {
         try {
-             Materia nuevaMateria = new Materia(mdto);
+            if(materiaDTO.getBranch().equals("UNASIGNED")){
+                log.debug("Branch no puede ser UNASIGNED");
+            }
+
+             Materia nuevaMateria = new Materia(materiaDTO);
              materiaRepository.saveAndFlush(nuevaMateria);
              return nuevaMateria;
              }
@@ -49,10 +55,11 @@ public class ImServicioMateria implements ServicioMateria{
         return null;
     }
 
-    // Implmentar la funcionalidad
     @Override
     public Materia updateMateria(String id, MateriaDTO sdto) {
-        return null;
+        Materia materia2 = materiaRepository.findById(id).get();
+        materia2.setDatos(sdto);
+        return materia2;
     }
 
     @Override
