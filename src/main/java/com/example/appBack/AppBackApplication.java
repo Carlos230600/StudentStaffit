@@ -1,19 +1,13 @@
 package com.example.appBack;
 
 
-import com.example.appBack.Student.Entity.branch;
-import com.example.appBack.Student.Entity.Student;
-import com.example.appBack.Student.Entity.branch;
-import com.example.appBack.Student.repositorio.StudentRepository;
+import com.example.appBack.student.repositorio.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-import java.sql.Date;
-import java.util.Optional;
 
 @SpringBootApplication
 @EnableSwagger2
