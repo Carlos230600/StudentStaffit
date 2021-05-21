@@ -1,7 +1,11 @@
 package com.example.appBack.student.infraestructure.controller.dto;
 
+import com.example.appBack.student.domain.Student;
+import com.example.appBack.student.domain.noDatabase.BranchEnum;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -17,8 +21,8 @@ public class StudentOutputDTO {
     private String coments;
     private BranchEnum branchEnum;
     private Boolean active;
-    private String createdDate;
-    private String terminationDate;
+    private Date createdDate;
+    private Date terminationDate;
 
 
 
