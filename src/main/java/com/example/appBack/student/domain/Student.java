@@ -13,24 +13,36 @@ import java.util.Date;
 public class Student {
 
     private String idStudent;
+
     private String name;
+
     private String surname;
+
     private String companyEmail;
+
     private String personalEmail;
+
     private String city;
+
     private Integer numHoursWeek;
+
     private String coments;
+
     private BranchEnum branchEnum;
+
     private Boolean active;
+
     private Date createdDate;
+
     private Date terminationDate;
+
     private StudentJPA studentJpa;
 
 
     public Student(StudentJPA studentJPA) {
-        if(studentJpa == null) return;
+        if(studentJPA == null) return;
 
-        this.studentJpa = studentJpa;
+        this.studentJpa = studentJPA;
 
         this.setIdStudent(studentJPA.getIdStudent());
         this.setName(studentJPA.getName());

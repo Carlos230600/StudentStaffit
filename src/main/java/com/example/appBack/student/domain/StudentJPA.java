@@ -22,7 +22,7 @@ public class StudentJPA {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estudiantes_seq")
     @GenericGenerator(
             name = "estudiantes_seq",
-            strategy = "com.example.appBack.Student.Entity.StringPrefixedSequenceIdGenerator",
+            strategy = "com.example.appBack.student.domain.StringPrefixedSequenceIdGenerator",
             parameters = {
                     @Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "50"),
                     @Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "EST"),

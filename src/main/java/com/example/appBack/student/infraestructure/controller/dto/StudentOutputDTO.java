@@ -12,16 +12,27 @@ import java.util.Date;
 public class StudentOutputDTO {
 
     private String idStudent;
+
     private String name;
+
     private String surname;
+
     private String companyEmail;
+
     private String personalEmail;
+
     private String city;
+
     private Integer numHoursWeek;
+
     private String coments;
+
     private BranchEnum branchEnum;
+
     private Boolean active;
+
     private Date createdDate;
+
     private Date terminationDate;
 
 
